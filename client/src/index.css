@@ -1,0 +1,79 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+    margin: 0;
+    padding: 0;
+}
+
+input,
+textarea,
+button {
+    outline: none;
+    resize: none;
+}
+
+html ::-webkit-scrollbar {
+    border-radius: 0px;
+    width: 8px;
+}
+html *::-webkit-scrollbar {
+    border-radius: 0;
+    width: 8px;
+}
+
+/* Thanh scrool */
+html ::-webkit-scrollbar-thumb {
+    border-radius: 4px;
+    background-color: #e3e3e3;
+}
+html *::-webkit-scrollbar-thumb {
+    border-radius: 4px;
+    background-color: #e3e3e3;
+}
+
+html ::-webkit-scrollbar-track {
+    border-radius: 0px;
+    background-color: #fff;
+}
+html *::-webkit-scrollbar-track {
+    border-radius: 0;
+    background-color: #fff;
+}
+
+.no-scrollbar::-webkit-scrollbar {
+    display: none; /* Ẩn scrollbar trên Chrome, Safari và các trình duyệt dùng WebKit */
+}
+
+.no-scrollbar {
+    -ms-overflow-style: none; /* Ẩn scrollbar trên IE và Edge */
+    scrollbar-width: none; /* Ẩn scrollbar trên Firefox */
+}
+
+/* Markdown */
+
+.code-highlight {
+    color: #ff4500; /* Màu chữ */
+    font-family: monospace; /* Định dạng font chữ cho code */
+    padding: 8px; /* Khoảng đệm */
+    border-radius: 4px; /* Bo góc */
+    outline: none !important;
+}
+
+ul {
+    list-style: disc; /* Hiển thị chấm cho <ul> */
+    margin: 0;
+}
+
+ol {
+    list-style: decimal; /* Hiển thị số cho <ol> */
+    padding: '12px' !important;
+}
+
+/* Ẩn nút spinner trong trình duyệt Webkit (Chrome, Safari, Edge) */
+input[type='number']::-webkit-inner-spin-button,
+input[type='number']::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}

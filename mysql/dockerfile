@@ -1,0 +1,14 @@
+
+# Lấy image từ docker hub
+FROM mysql:latest
+
+# Copy file storage.sql trong đây và chép vào container
+COPY storage.sql /docker-entrypoint-initdb.d/
+
+ENV MYSQL_ROOT_PASSWORD=123456
+
+# Cổng sẽ chạy
+EXPOSE 3306
+
+# Tạo volume ở trên docker
+VOLUME /var/lib/mysql

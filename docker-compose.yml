@@ -1,0 +1,49 @@
+version: '3'
+services:
+    mysql:
+        build: ./mysql
+        container_name: mysql_container
+        environment:
+            - MYSQL_ROOT_PASSWORD=123456
+        ports:
+            - '3305:3306'
+        volumes:
+            - ./mysql/storage.sql:/docker-entrypoint-initdb.d/storage.sql
+            - mysql_data:/var/lib/mysql
+        networks:
+            - server_network
+
+    mongo:
+        build: ./mongo
+        container_name: mongo_container
+        ports:
+            - '27017:27017'
+        volumes:
+            - ./mongo/mongo.js:/docker-entrypoint-initdb.d/mongo.js # Copy file script MongoDB vào container
+            - mongo_data:/data/db # Lưu trữ dữ liệu MongoDB
+        networks:
+            - server_network
+
+    server:
+        build: ./server
+        container_name: server_container
+        ports:
+            - '2303:2303'
+        networks:
+            - server_network
+
+    client:
+        build: ./client
+        container_name: client_container
+        ports:
+            - '3000:3000'
+        networks:
+            - server_network
+
+networks:
+    server_network:
+        driver: bridge
+
+volumes:
+    mysql_data: # Khai báo volume "mysql_data" ở đây
+    mongo_data:
